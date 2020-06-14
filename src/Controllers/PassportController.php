@@ -30,8 +30,8 @@ class PassportController implements RequestHandlerInterface
     protected function getProvider($redirectUri)
     {
         return new PassportProvider([
-            'clientId' => $this->settings->get('fof-passport.app_id'),
-            'clientSecret' => $this->settings->get('fof-passport.app_secret'),
+            'clientId' => $this->settings->get('blessing-auth.app_id'),
+            'clientSecret' => $this->settings->get('blessing-auth.app_secret'),
             'redirectUri' => $redirectUri,
             'settings' => $this->settings,
         ]);
@@ -39,7 +39,7 @@ class PassportController implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $redirectUri = $this->url->to('forum')->route('auth.passport');
+        $redirectUri = $this->url->to('forum')->route('auth.blessing');
 
         $provider = $this->getProvider($redirectUri);
 

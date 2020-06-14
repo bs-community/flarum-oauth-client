@@ -14,7 +14,7 @@ return [
     new Extend\Locales(__DIR__ . '/locale'),
 
     (new Extend\Routes('forum'))
-        ->get('/auth/passport', 'auth.passport', Controllers\PassportController::class),
+        ->get('/auth/blessing', 'auth.blessing', Controllers\PassportController::class),
 
     new Extenders\ForumAttributes(),
 ];
