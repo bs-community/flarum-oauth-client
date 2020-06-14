@@ -10,4 +10,4 @@ blessing-auth:
                 button-icon: Icon for login button
 
     api:
-        default-login-button-title: => core.ref.log_in
+        default-login-button-title: Login with Blessing Skin
