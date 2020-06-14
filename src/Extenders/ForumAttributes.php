@@ -25,10 +25,10 @@ class ForumAttributes implements ExtenderInterface
              */
             $settings = app(SettingsRepositoryInterface::class);
 
-            $event->attributes['blessing-auth.loginTitle'] =
-                $settings->get('blessing-auth.button_title') ?: app(Translator::class)->trans('blessing-auth.api.default-login-button-title');
-            $event->attributes['blessing-auth.loginIcon'] =
-                $settings->get('blessing-auth.button_icon') ?: 'far fa-id-card';
+            $event->attributes['blessing-oauth-client.loginTitle'] =
+                $settings->get('blessing-oauth-client.button_title') ?: app(Translator::class)->trans('blessing-oauth-client.api.default-login-button-title');
+            $event->attributes['blessing-oauth-client.loginIcon'] =
+                $settings->get('blessing-oauth-client.button_icon') ?: 'far fa-id-card';
         }
     }
 }

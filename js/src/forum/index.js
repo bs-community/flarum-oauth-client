@@ -3,16 +3,16 @@ import app from 'flarum/app'
 import LogInButtons from 'flarum/components/LogInButtons'
 import LogInButton from 'flarum/components/LogInButton'
 
-app.initializers.add('blessing-auth', () => {
+app.initializers.add('blessing-oauth-client', () => {
   extend(LogInButtons.prototype, 'items', function (items) {
     items.add(
-      'blessing-auth',
+      'blessing-oauth-client',
       <LogInButton
         className="Button LogInButton--passport"
-        icon={app.forum.attribute('blessing-auth.loginIcon')}
+        icon={app.forum.attribute('blessing-oauth-client.loginIcon')}
         path="/auth/blessing"
       >
-        {app.forum.attribute('blessing-auth.loginTitle')}
+        {app.forum.attribute('blessing-oauth-client.loginTitle')}
       </LogInButton>
     )
   })

@@ -1,13 +1,12 @@
-blessing-auth:
-    admin:
-        popup:
-            title: Blessing Skin Login
-            field:
-                base-url: Blessing Skin base URL
-                app-id: OAuth application ID
-                app-secret: OAuth application secret
-                button-title: Label for login button
-                button-icon: Icon for login button
-
-    api:
-        default-login-button-title: Login with Blessing Skin
+blessing-oauth-client:
+  admin:
+    popup:
+      title: Blessing Skin Login
+      field:
+        base-url: Blessing Skin base URL
+        app-id: OAuth application ID
+        app-secret: OAuth application secret
+        button-title: Label for login button
+        button-icon: Icon for login button
+  api:
+    default-login-button-title: Login with Blessing Skin

@@ -30,7 +30,7 @@ class PassportProvider extends AbstractProvider
      */
     public function getBaseAuthorizationUrl()
     {
-        $baseUrl = $this->settings->get('blessing-auth.base_url');
+        $baseUrl = $this->settings->get('blessing-oauth-client.base_url');
 
         return Str::finish($baseUrl, '/').'oauth/authorize';
     }
@@ -44,7 +44,7 @@ class PassportProvider extends AbstractProvider
      */
     public function getBaseAccessTokenUrl(array $params)
     {
-        $baseUrl = $this->settings->get('blessing-auth.base_url');
+        $baseUrl = $this->settings->get('blessing-oauth-client.base_url');
 
         return Str::finish($baseUrl, '/').'oauth/token';
     }
@@ -56,7 +56,7 @@ class PassportProvider extends AbstractProvider
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
-        $baseUrl = $this->settings->get('blessing-auth.base_url');
+        $baseUrl = $this->settings->get('blessing-oauth-client.base_url');
 
         return Str::finish($baseUrl, '/').'api/user';
     }
