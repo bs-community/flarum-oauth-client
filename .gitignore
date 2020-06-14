@@ -3,3 +3,4 @@ vendor/
 composer.lock
 package-lock.json
 yarn.lock
+.php_cs.cache

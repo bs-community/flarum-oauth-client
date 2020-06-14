@@ -37,7 +37,6 @@ class PassportProvider extends AbstractProvider
      *
      * Eg. https://oauth.service.com/token
      *
-     * @param array $params
      * @return string
      */
     public function getBaseAccessTokenUrl(array $params)
@@ -48,7 +47,6 @@ class PassportProvider extends AbstractProvider
     /**
      * Returns the URL for requesting the resource owner's details.
      *
-     * @param AccessToken $token
      * @return string
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token)
@@ -73,8 +71,9 @@ class PassportProvider extends AbstractProvider
      * Checks a provider response for errors.
      *
      * @throws IdentityProviderException
-     * @param  ResponseInterface $response
-     * @param  array|string $data Parsed response data
+     *
+     * @param array|string $data Parsed response data
+     *
      * @return void
      */
     protected function checkResponse(ResponseInterface $response, $data)
@@ -85,8 +84,6 @@ class PassportProvider extends AbstractProvider
      * Generates a resource owner object from a successful resource owner
      * details request.
      *
-     * @param  array $response
-     * @param  AccessToken $token
      * @return ResourceOwnerInterface
      */
     protected function createResourceOwner(array $response, AccessToken $token)

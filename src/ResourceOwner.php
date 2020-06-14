@@ -14,7 +14,7 @@ class ResourceOwner implements ResourceOwnerInterface
      */
     private $response;
 
-    function __construct(array $response = [])
+    public function __construct(array $response = [])
     {
         $this->response = $response;
     }
@@ -30,7 +30,7 @@ class ResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * Get resource owner email
+     * Get resource owner email.
      *
      * @return string|null
      */
@@ -40,7 +40,7 @@ class ResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * Get resource owner name
+     * Get resource owner name.
      *
      * @return string|null
      */

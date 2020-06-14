@@ -2,17 +2,17 @@
 
 namespace Blessing\Flarum\Controllers;
 
-use Exception;
 use Blessing\Flarum\Providers\PassportProvider;
+use Exception;
 use Flarum\Forum\Auth\Registration;
 use Flarum\Forum\Auth\ResponseFactory;
+use Flarum\Http\UrlGenerator;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Illuminate\Support\Arr;
+use Laminas\Diactoros\Response\RedirectResponse;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Laminas\Diactoros\Response\RedirectResponse;
-use Flarum\Http\UrlGenerator;
 
 class PassportController implements RequestHandlerInterface
 {
@@ -30,10 +30,10 @@ class PassportController implements RequestHandlerInterface
     protected function getProvider($redirectUri)
     {
         return new PassportProvider([
-            'clientId'     => $this->settings->get('fof-passport.app_id'),
+            'clientId' => $this->settings->get('fof-passport.app_id'),
             'clientSecret' => $this->settings->get('fof-passport.app_secret'),
-            'redirectUri'  => $redirectUri,
-            'settings'     => $this->settings
+            'redirectUri' => $redirectUri,
+            'settings' => $this->settings,
         ]);
     }
 
@@ -43,7 +43,7 @@ class PassportController implements RequestHandlerInterface
 
         $provider = $this->getProvider($redirectUri);
 
-        $session     = $request->getAttribute('session');
+        $session = $request->getAttribute('session');
         $queryParams = $request->getQueryParams();
 
         if ($error = Arr::get($queryParams, 'error')) {

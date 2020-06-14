@@ -21,7 +21,7 @@ class ForumAttributes implements ExtenderInterface
     {
         if ($event->isSerializer(ForumSerializer::class)) {
             /**
-             * @var $settings SettingsRepositoryInterface
+             * @var SettingsRepositoryInterface
              */
             $settings = app(SettingsRepositoryInterface::class);
 
