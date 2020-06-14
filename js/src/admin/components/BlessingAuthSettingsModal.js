@@ -1,7 +1,7 @@
 import app from 'flarum/app'
 import SettingsModal from 'flarum/components/SettingsModal'
 
-export default class PassportSettingsModal extends SettingsModal {
+export default class BlessingAuthSettingsModal extends SettingsModal {
   title() {
     return app.translator.trans('blessing-skin.admin.popup.title')
   }
