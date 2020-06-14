@@ -23,8 +23,8 @@
         "flarum-extension": {
             "title": "Blessing Skin Login",
             "icon": {
-                "name": "fas fa-key",
-                "backgroundColor": "#e74c3c",
+                "name": "fas fa-tshirt",
+                "backgroundColor": "#6f42c1",
                 "color": "#fff"
             }
         }
