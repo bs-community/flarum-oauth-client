@@ -1,9 +1,9 @@
 <?php
 
-namespace FoF\Passport\Controllers;
+namespace Blessing\Flarum\Controllers;
 
 use Exception;
-use FoF\Passport\Providers\PassportProvider;
+use Blessing\Flarum\Providers\PassportProvider;
 use Flarum\Forum\Auth\Registration;
 use Flarum\Forum\Auth\ResponseFactory;
 use Flarum\Settings\SettingsRepositoryInterface;

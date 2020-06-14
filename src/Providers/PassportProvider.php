@@ -1,8 +1,8 @@
 <?php
 
-namespace FoF\Passport\Providers;
+namespace Blessing\Flarum\Providers;
 
-use FoF\Passport\ResourceOwner;
+use Blessing\Flarum\ResourceOwner;
 use Flarum\Settings\SettingsRepositoryInterface;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;

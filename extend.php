@@ -1,6 +1,6 @@
 <?php
 
-namespace FoF\Passport;
+namespace Blessing\Flarum;
 
 use Flarum\Extend;
 

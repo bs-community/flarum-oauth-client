@@ -1,6 +1,6 @@
 <?php
 
-namespace FoF\Passport\Extenders;
+namespace Blessing\Flarum\Extenders;
 
 use Flarum\Api\Event\Serializing;
 use Flarum\Api\Serializer\ForumSerializer;
