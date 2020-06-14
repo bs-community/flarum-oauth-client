@@ -4,6 +4,7 @@ namespace Blessing\Flarum\Providers;
 
 use Blessing\Flarum\ResourceOwner;
 use Flarum\Settings\SettingsRepositoryInterface;
+use Illuminate\Support\Str;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
@@ -29,7 +30,9 @@ class PassportProvider extends AbstractProvider
      */
     public function getBaseAuthorizationUrl()
     {
-        return $this->settings->get('blessing-auth.app_auth_url');
+        $baseUrl = $this->settings->get('blessing-auth.base_url');
+
+        return Str::finish($baseUrl, '/').'oauth/authorize';
     }
 
     /**
@@ -41,7 +44,9 @@ class PassportProvider extends AbstractProvider
      */
     public function getBaseAccessTokenUrl(array $params)
     {
-        return $this->settings->get('blessing-auth.app_token_url');
+        $baseUrl = $this->settings->get('blessing-auth.base_url');
+
+        return Str::finish($baseUrl, '/').'oauth/token';
     }
 
     /**
@@ -51,7 +56,9 @@ class PassportProvider extends AbstractProvider
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
-        return $this->settings->get('blessing-auth.app_user_url');
+        $baseUrl = $this->settings->get('blessing-auth.base_url');
+
+        return Str::finish($baseUrl, '/').'api/user';
     }
 
     /**

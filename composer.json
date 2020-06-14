@@ -1,6 +1,6 @@
 {
     "name": "blessing/flarum-oauth-client",
-    "description": "OAuth2 client of Blessing Skin for Flarum",
+    "description": "OAuth2 client of Blessing Skin for Flarum.",
     "type": "flarum-extension",
     "license": "MIT",
     "authors": [
