@@ -2,10 +2,8 @@
 
 namespace FoF\Passport\Providers;
 
-use FoF\Passport\Events\ParsingResourceOwner;
 use FoF\Passport\ResourceOwner;
 use Flarum\Settings\SettingsRepositoryInterface;
-use Illuminate\Contracts\Events\Dispatcher;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
@@ -93,8 +91,6 @@ class PassportProvider extends AbstractProvider
      */
     protected function createResourceOwner(array $response, AccessToken $token)
     {
-        app(Dispatcher::class)->dispatch(new ParsingResourceOwner($response));
-
         return new ResourceOwner($response);
     }
 }

@@ -8,6 +8,7 @@ use League\OAuth2\Client\Tool\ArrayAccessorTrait;
 class ResourceOwner implements ResourceOwnerInterface
 {
     use ArrayAccessorTrait;
+
     /**
      * @var array
      */
@@ -25,7 +26,7 @@ class ResourceOwner implements ResourceOwnerInterface
      */
     public function getId()
     {
-        return $this->getValueByKey($this->response, 'id');
+        return $this->getValueByKey($this->response, 'uid');
     }
 
     /**
@@ -45,7 +46,7 @@ class ResourceOwner implements ResourceOwnerInterface
      */
     public function getName()
     {
-        return $this->getValueByKey($this->response, 'name');
+        return $this->getValueByKey($this->response, 'nickname');
     }
 
     /**

@@ -3,12 +3,10 @@
 namespace FoF\Passport\Controllers;
 
 use Exception;
-use FoF\Passport\Events\SendingResponse;
 use FoF\Passport\Providers\PassportProvider;
 use Flarum\Forum\Auth\Registration;
 use Flarum\Forum\Auth\ResponseFactory;
 use Flarum\Settings\SettingsRepositoryInterface;
-use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\Arr;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -20,14 +18,12 @@ class PassportController implements RequestHandlerInterface
 {
     protected $settings;
     protected $response;
-    protected $events;
     protected $url;
 
-    public function __construct(ResponseFactory $response, SettingsRepositoryInterface $settings, Dispatcher $events, UrlGenerator $url)
+    public function __construct(ResponseFactory $response, SettingsRepositoryInterface $settings, UrlGenerator $url)
     {
         $this->response = $response;
         $this->settings = $settings;
-        $this->events = $events;
         $this->url = $url;
     }
 
@@ -39,16 +35,6 @@ class PassportController implements RequestHandlerInterface
             'redirectUri'  => $redirectUri,
             'settings'     => $this->settings
         ]);
-    }
-
-    /**
-     * @return array
-     */
-    protected function getAuthorizationUrlOptions()
-    {
-        $scopes = $this->settings->get('fof-passport.app_oauth_scopes', '');
-
-        return ['scope' => $scopes];
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
@@ -69,7 +55,7 @@ class PassportController implements RequestHandlerInterface
         $code = Arr::get($queryParams, 'code');
 
         if (!$code) {
-            $authUrl = $provider->getAuthorizationUrl($this->getAuthorizationUrlOptions());
+            $authUrl = $provider->getAuthorizationUrl(['scope' => '']);
             $session->put('oauth2state', $provider->getState());
 
             return new RedirectResponse($authUrl);
@@ -83,22 +69,17 @@ class PassportController implements RequestHandlerInterface
         }
 
         $token = $provider->getAccessToken('authorization_code', compact('code'));
-        $user  = $provider->getResourceOwner($token);
+        $user = $provider->getResourceOwner($token);
 
         $response = $this->response->make(
-            'passport', $user->getId(),
-            function (Registration $registration) use ($user, $provider, $token) {
+            'blessing', $user->getId(),
+            function (Registration $registration) use ($user) {
                 $registration
                     ->provideTrustedEmail($user->getEmail())
+                    ->suggestUsername($user->getName())
                     ->setPayload($user->toArray());
             }
         );
-
-        $this->events->dispatch(new SendingResponse(
-            $response,
-            $user,
-            $token
-        ));
 
         return $response;
     }
