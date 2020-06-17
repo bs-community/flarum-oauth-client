@@ -24,7 +24,9 @@ OAuth application secret | `abcdefghijABCDEFGHIJabcdefghijABCDEFGHIJ` | The *Cli
 Label for login button | Login with Blessing Skin | Label to place on the login button
 Icon for login button | `far fa-id-card` | FontAwesome icon to place on the login button.
 
-**Hint:** When creating the OAuth client in Blessing Skin, don't forget to set the `redirect` value to `<your flarum install>/auth/passport`.
+**Hint:** When creating the OAuth client in Blessing Skin, don't forget to set the `redirect` value to `<your flarum install>/auth/blessing`.
+
+Full tutorial can be found: [Working with Flarum](https://blessing.netlify.app/en/flarum.html).
 
 ## License
 
