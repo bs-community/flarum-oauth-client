@@ -3,7 +3,7 @@ blessing-oauth-client:
     popup:
       title: Blessing Skin Login
       field:
-        base-url: Blessing Skin base URL
+        base-url: Blessing Skin root URL
         app-id: OAuth client ID
         app-secret: OAuth client secret
         button-title: Label for login button
