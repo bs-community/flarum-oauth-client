@@ -4,8 +4,8 @@ blessing-oauth-client:
       title: Blessing Skin Login
       field:
         base-url: Blessing Skin base URL
-        app-id: OAuth application ID
-        app-secret: OAuth application secret
+        app-id: OAuth client ID
+        app-secret: OAuth client secret
         button-title: Label for login button
         button-icon: Icon for login button
   api:
