@@ -2,33 +2,35 @@
 
 namespace Blessing\Flarum\Extenders;
 
-use Flarum\Api\Event\Serializing;
 use Flarum\Api\Serializer\ForumSerializer;
-use Flarum\Extend\ExtenderInterface;
-use Flarum\Extension\Extension;
 use Flarum\Locale\Translator;
 use Flarum\Settings\SettingsRepositoryInterface;
-use Illuminate\Contracts\Container\Container;
 
-class ForumAttributes implements ExtenderInterface
+class ForumAttributes
 {
-    public function extend(Container $container, Extension $extension = null)
+    /**
+     * @var Translator
+     */
+    protected $translator;
+
+    /**
+     * @var SettingsRepositoryInterface
+     */
+    protected $settings;
+
+    public function __construct(Translator $translator, SettingsRepositoryInterface $settings)
     {
-        $container['events']->listen(Serializing::class, [$this, 'attributes']);
+        $this->translator = $translator;
+        $this->settings = $settings;
     }
 
-    public function attributes(Serializing $event)
+    public function __invoke(ForumSerializer $serializer)
     {
-        if ($event->isSerializer(ForumSerializer::class)) {
-            /**
-             * @var SettingsRepositoryInterface
-             */
-            $settings = app(SettingsRepositoryInterface::class);
+        $attributes['blessing-oauth-client.loginTitle'] =
+            $this->settings->get('blessing-oauth-client.button_title') ?: $this->translator->trans('blessing-oauth-client.api.default-login-button-title');
+        $attributes['blessing-oauth-client.loginIcon'] =
+            $this->settings->get('blessing-oauth-client.button_icon') ?: 'far fa-id-card';
 
-            $event->attributes['blessing-oauth-client.loginTitle'] =
-                $settings->get('blessing-oauth-client.button_title') ?: app(Translator::class)->trans('blessing-oauth-client.api.default-login-button-title');
-            $event->attributes['blessing-oauth-client.loginIcon'] =
-                $settings->get('blessing-oauth-client.button_icon') ?: 'far fa-id-card';
-        }
+        return $attributes;
     }
 }
