@@ -9,3 +9,6 @@ indent_size = 2
 
 [*.php]
 indent_size = 4
+
+[composer.json]
+indent_size = 4
