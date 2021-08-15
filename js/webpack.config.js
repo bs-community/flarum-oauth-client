@@ -14,13 +14,16 @@ const config = {
     },
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js'],
   },
   module: {
     rules: [
       {
         test: /\.ts$/,
         loader: 'ts-loader',
+        options: {
+          transpileOnly: true,
+        },
       },
     ],
   },
