@@ -1,0 +1,12 @@
+{
+  "extends": "@gplane/tsconfig",
+  "compilerOptions": {
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": false,
+    "paths": {
+      "flarum/*": ["../vendor/flarum/core/js/dist-typings/*"]
+    }
+  },
+  "include": ["src/**/*", "*.ts"]
+}

@@ -1,6 +1,6 @@
-import app from 'flarum/app'
+import app from 'flarum/admin/app'
 
-app.initializers.add('blessing-oauth-client', (app) => {
+app.initializers.add('blessing-oauth-client', () => {
   app.extensionData
     .for('blessing-oauth-client')
     .registerSetting({

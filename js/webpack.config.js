@@ -3,8 +3,8 @@ const path = require('path')
 /** @type {import('webpack').Configuration} */
 const config = {
   entry: {
-    forum: './forum.js',
-    admin: './admin.js',
+    forum: './forum.ts',
+    admin: './admin.ts',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -12,6 +12,17 @@ const config = {
       type: 'assign',
       name: 'module.exports',
     },
+  },
+  resolve: {
+    extensions: ['.ts', '.js']
+  },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+      },
+    ],
   },
   externals: [
     // copied and modified from "flarum-webpack-config"

@@ -16,12 +16,13 @@
         }
     ],
     "require": {
-        "flarum/core": "^0.1.0-beta.15",
+        "flarum/core": "^1.0",
         "league/oauth2-client": "^2.3.0"
     },
     "extra": {
         "flarum-extension": {
             "title": "Blessing Skin Login",
+            "category": "feature",
             "icon": {
                 "name": "fas fa-tshirt",
                 "backgroundColor": "#6f42c1",
