@@ -2,8 +2,10 @@
 
 namespace Blessing\Flarum\Providers;
 
+use Blessing\Flarum\Events\ParsingResourceOwner;
 use Blessing\Flarum\ResourceOwner;
 use Flarum\Settings\SettingsRepositoryInterface;
+use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\Str;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
@@ -95,6 +97,8 @@ class PassportProvider extends AbstractProvider
      */
     protected function createResourceOwner(array $response, AccessToken $token)
     {
+        resolve(Dispatcher::class)->dispatch(new ParsingResourceOwner($response));
+
         return new ResourceOwner($response);
     }
 }

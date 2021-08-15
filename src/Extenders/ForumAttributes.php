@@ -24,7 +24,7 @@ class ForumAttributes
         $this->settings = $settings;
     }
 
-    public function __invoke(ForumSerializer $serializer)
+    public function __invoke(ForumSerializer $serializer): array
     {
         $attributes['blessing-oauth-client.loginTitle'] =
             $this->settings->get('blessing-oauth-client.button_title') ?: $this->translator->trans('blessing-oauth-client.api.default-login-button-title');

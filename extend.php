@@ -18,5 +18,5 @@ return [
         ->get('/auth/blessing', 'auth.blessing', Controllers\PassportController::class),
 
     (new Extend\ApiSerializer(ForumSerializer::class))
-        ->mutate(Extenders\ForumAttributes::class),
+        ->attributes(Extenders\ForumAttributes::class),
 ];

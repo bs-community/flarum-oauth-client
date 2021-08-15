@@ -1,7 +1,7 @@
 import { extend } from 'flarum/extend'
 import app from 'flarum/app'
-import LogInButtons from 'flarum/components/LogInButtons'
-import LogInButton from 'flarum/components/LogInButton'
+import LogInButtons from 'flarum/forum/components/LogInButtons'
+import LogInButton from 'flarum/forum/components/LogInButton'
 
 app.initializers.add('blessing-oauth-client', () => {
     extend(LogInButtons.prototype, 'items', function (items) {
