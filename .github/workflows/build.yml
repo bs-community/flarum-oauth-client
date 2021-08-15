@@ -11,5 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: flarum/action-build@master
+        with:
+          package_manager: yarn
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
