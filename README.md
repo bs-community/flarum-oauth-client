@@ -2,7 +2,7 @@
 
 This Flarum extension lets you login with Blessing Skin account.
 
-> This extension is a fork of `fof/passport`.
+> This extension is a fork of [`fof/passport`](https://github.com/FriendsOfFlarum/passport).
 
 ## Installation
 
