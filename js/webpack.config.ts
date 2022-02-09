@@ -1,7 +1,7 @@
-const path = require('path')
+import * as path from 'node:path'
+import type { Configuration } from 'webpack'
 
-/** @type {import('webpack').Configuration} */
-const config = {
+const config: Configuration = {
   entry: {
     forum: './forum.ts',
     admin: './admin.ts',
@@ -30,13 +30,18 @@ const config = {
   externals: [
     // copied and modified from "flarum-webpack-config"
     function ({ request }, callback) {
+      if (!request) {
+        callback()
+        return
+      }
+
       const matches = /^flarum\/(.+)$/.exec(request)
       if (matches) {
-        return callback(null, "root flarum.core.compat['" + matches[1] + "']")
+        return callback(undefined, "root flarum.core.compat['" + matches[1] + "']")
       }
       callback()
     },
   ],
 }
 
-module.exports = config
+export default config

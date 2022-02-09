@@ -8,5 +8,10 @@
       "flarum/*": ["../vendor/flarum/core/js/dist-typings/*"]
     }
   },
-  "include": ["src/**/*", "*.ts"]
+  "include": ["src/**/*", "*.ts"],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  }
 }
